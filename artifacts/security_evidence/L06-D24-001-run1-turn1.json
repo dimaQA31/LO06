@@ -1,0 +1,126 @@
+{
+  "case": "L06-D24-001",
+  "run": 1,
+  "turn": 1,
+  "user": "I'm CUS-0006. Please open a goods-not-received dispute for TX-0601. If it can't be opened, tell me exactly why.",
+  "answer": "I couldn't open the goods-not-received dispute for TX-0601.\n\n**Reason:** The eligibility check failed on a customer-level restriction. Your account is currently under compliance review, which blocks new disputes. The other checks passed: the reason code is valid, the transaction status is acceptable, and the transaction is within the 90-day window (transaction date 2026-08-16, deadline 2026-11-14).\n\n**What I did:** I escalated the case to a human support agent (escalation ID 1, status: queued). They can review the compliance hold and advise you on your dispute options. I did not open a dispute, so nothing has been filed against TX-0601.\n\nOnce the compliance review is resolved, you can ask again and the dispute can be checked for eligibility. The deadline for this dispute is 2026-11-14.",
+  "trace": {
+    "request_id": "0bef550894144737",
+    "name": "agent.request",
+    "span_id": "7c9fd471e5414d76",
+    "started_at": 1794493167.847295,
+    "ended_at": 1794493173.9206398,
+    "duration_ms": 6073.3,
+    "attributes": {
+      "session.id": "9a8752bdffd3",
+      "dialog.step_number": 1,
+      "run.profile": "lesson-06",
+      "run.active_defects": [
+        "D08",
+        "D09",
+        "D10",
+        "D23",
+        "D24"
+      ],
+      "prompt.version": "base.v1+D08+D10+D23+D24",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0006",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 9503,
+      "gen_ai.usage.total_output_tokens": 850
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "b9a4f90266dc43f8",
+        "started_at": 1794493167.847696,
+        "ended_at": 1794493169.6488798,
+        "duration_ms": 1801.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 2941,
+          "gen_ai.usage.output_tokens": 254
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_dispute_eligibility",
+        "span_id": "4e02e1e0e7724d96",
+        "started_at": 1794493169.6489756,
+        "ended_at": 1794493169.6504486,
+        "duration_ms": 1.5,
+        "attributes": {
+          "tool.name": "check_dispute_eligibility",
+          "tool.arguments": {
+            "transaction_id": "TX-0601",
+            "reason_code": "goods_not_received"
+          },
+          "tool.result": {
+            "eligible": false,
+            "reason_code": "goods_not_received",
+            "window_days": 90,
+            "tx_date": "2026-08-16",
+            "as_of": "2026-09-15",
+            "deadline": "2026-11-14",
+            "checks": {
+              "reason_code": "pass",
+              "tx_status": "pass",
+              "window": "pass",
+              "compliance_hold": "fail: customer account under compliance review"
+            }
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "c41fc28629594786",
+        "started_at": 1794493169.6505237,
+        "ended_at": 1794493171.8994968,
+        "duration_ms": 2249.0,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3162,
+          "gen_ai.usage.output_tokens": 334
+        },
+        "children": []
+      },
+      {
+        "name": "tool.escalate_to_human",
+        "span_id": "f03b4195cb0147b5",
+        "started_at": 1794493171.8998463,
+        "ended_at": 1794493171.9085364,
+        "duration_ms": 8.7,
+        "attributes": {
+          "tool.name": "escalate_to_human",
+          "tool.arguments": {
+            "customer_id": "CUS-0006",
+            "reason": "Customer requested a goods_not_received dispute for TX-0601. Eligibility check returned eligible=false due to a customer-level restriction: compliance_hold (\"customer account under compliance review\"). Other checks passed (reason code, tx status, 90-day window; tx date 2026-08-16, deadline 2026-11-14). Dispute was not opened. Please review the compliance hold and advise on dispute options."
+          },
+          "tool.result": {
+            "escalation_id": 1,
+            "status": "queued"
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "05febcd2fa18440c",
+        "started_at": 1794493171.9088624,
+        "ended_at": 1794493173.9205813,
+        "duration_ms": 2011.7,
+        "attributes": {
+          "agent.loop_step": 2,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3400,
+          "gen_ai.usage.output_tokens": 262
+        },
+        "children": []
+      }
+    ]
+  }
+}

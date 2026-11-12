@@ -1,0 +1,19 @@
+{
+  "set": "evals/sets/l06_security.jsonl",
+  "set_hash": "f2e3381cc33b",
+  "cases": 7,
+  "multi_turn": 2,
+  "daily": 5,
+  "release": 2,
+  "loader_paths": [
+    "evals/sets/l06_security.jsonl",
+    "sets/l06_security.jsonl"
+  ],
+  "checks": {
+    "at_least_six": true,
+    "required_metadata": true,
+    "added_in_l06": true,
+    "daily_single_turn": true,
+    "d23_release_five_runs": true
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-11-12",
+  "set_hash": "f2e3381cc33b",
+  "cases": 7,
+  "daily_cases": 5,
+  "release_cases": 2,
+  "numbered_sections": 8,
+  "all_case_ids_in_section_7": true,
+  "all_findings_have_defense_costs": true,
+  "isolated_copy_without_env_loads": true,
+  "lesson06_completed_report": "artifacts/l06_security_lesson06_2026-11-12.json",
+  "lesson06_passed": 4,
+  "lesson06_total": 7,
+  "env_tracked": false,
+  "env_ignored": true,
+  "source_changed_after_report": false,
+  "limitation": "Live make eval was run in the working repository; isolated-copy verification loads the final set without .env and does not repeat model calls."
+}
